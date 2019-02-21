@@ -1,4 +1,4 @@
-INSERT INTO `departments` Values('d001','Marketing'),
+INSERT INTO `departments` Values ('d001','Marketing'),
 ('d002','Finance'),
 ('d003','Human Resources'),
 ('d004','Production'),
