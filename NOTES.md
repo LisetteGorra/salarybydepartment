@@ -156,3 +156,5 @@ for (var i = 0; i < employeeDataArray.length; i++){
     
 -------------------------------------------------------------------------------
 employee name is next 
+
+and salaries

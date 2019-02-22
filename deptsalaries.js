@@ -33,11 +33,11 @@ fs.readFile('departments.txt', 'utf8', function(error, data){
         salaries.push([]);
         
     }
-    console.log(departmentID);
-    console.log(departments);
-    console.log(employeeID);
-    console.log(employeeName);
-    console.log(salaries);
+    // console.log(departmentID);
+    // console.log(departments);
+    // console.log(employeeID);
+    // console.log(employeeName);
+    // console.log(salaries);
     
 });
 
@@ -59,6 +59,30 @@ fs.readFile('employeedepartments.txt', 'utf8', function(error, data){
          employeeID[departmentID.indexOf(employeeDataArray[i].slice(9,13))].push(employeeDataArray[i].slice(2,7));
         }
     }
-    console.log(employeeID);
+    // console.log(employeeID);
     
 });
+
+
+//Process 'salaries.txt' file 
+
+fs.readFile('salaries.txt', 'utf8', function(error, data){
+    if (error) throw error;
+    
+    var cleanSalaryData = data.replace(/INSERT INTO `departments` Values /g, "");
+    var salaryArray = cleanSalaryData.split('\n');
+    
+    for (var i = 0; i < salaryArray.length; i++){
+        if(salaries.push(salaryArray[i].slice(27,31) == '9999')){
+            
+   
+        salaries.push(salaryArray[i].slice(27,31) == '9999');
+    
+
+//  console.log(salaryArray[i]);
+   }
+    console.log(salaries);
+}
+    
+
+})
