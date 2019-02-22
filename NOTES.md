@@ -112,3 +112,47 @@ var salaries = [];
 -------------------------------------------------------------------------------
 - now we can console log everything 
 - we do this sub array code so that we can populate no matter how many departments get added in the future
+
+-------------------------------------------------------------------------------
+- now we are going to process the department employee file
+
+
+//Process 'employeedepartments.txt' file 
+
+fs.readFile('employeedepartments.txt', 'utf8', function(error, data){
+    if(error) throw error;
+
+-------------------------------------------------------------------------------
+- clean the data like last time 
+
+  var cleanEmployeeData = data.replace(/INSERT INTO `departments` Values /g, "");
+  var employeeDataArray = cleanEmployeeData.split('\n');
+
+- and console log the code to make sure it works 
+
+console.log(employeeDataArray);
+-------------------------------------------------------------------------------
+ - now we have created arrays out of the data and cleaned, now we need to iterate through them 
+ - create a for loop 
+ - make sure it has an if statement that will extract the code with 9999 to get current salary lines
+ 
+
+  for (var i = 0; i < employeeDataArray.length; i++){
+        if (employeeDataArray[i].slice(29,33) == '9999'){
+            
+-------------------------------------------------------------------------------
+now we want to store the info into a sub array using a complex code 
+
+   employeeID[departmentID.indexOf(employeeDataArray[i].slice(7,11))].push(employeeDataArray[i].slice(2,6));
+   
+-------------------------------------------------------------------------------
+for loop in full 
+
+for (var i = 0; i < employeeDataArray.length; i++){
+        if (employeeDataArray[i].slice(28,32) == '9999'){
+            employeeID[departmentID.indexOf(employeeDataArray[i].slice(7,11))].push(employeeDataArray[i].slice(2,6));
+        }
+    }
+    
+-------------------------------------------------------------------------------
+employee name is next 

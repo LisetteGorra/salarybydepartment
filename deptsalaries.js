@@ -25,7 +25,7 @@ fs.readFile('departments.txt', 'utf8', function(error, data){
     for (var i = 0; i < deptDataArray.length; i++){
         // populate single-d arrays with DATA
         departmentID.push(deptDataArray[i].slice(2,6));
-        departments.push(deptDataArray[i].slice(9,-3))
+        departments.push(deptDataArray[i].slice(9,-3));
         
         // populate multi-d arrays with empty sub-arrays (NO DATA!!!)
         employeeID.push([]);
@@ -39,6 +39,26 @@ fs.readFile('departments.txt', 'utf8', function(error, data){
     console.log(employeeName);
     console.log(salaries);
     
-})
+});
 
+//Process 'employeedepartments.txt' file 
+
+fs.readFile('employeedepartments.txt', 'utf8', function(error, data){
+    if (error) throw error;
     
+    var cleanEmployeeData = data.replace(/INSERT INTO `departments` Values /g, "");
+    var employeeDataArray = cleanEmployeeData.split('\n');
+    
+    for (var i = 0; i < employeeDataArray.length; i++){
+        if (employeeDataArray[i].slice(29,33) == '9999'){
+            
+            
+            // console.log(employeeDataArray[i].slice(9,13));
+            // console.log(employeeDataArray[i].slice(2,7));
+            
+         employeeID[departmentID.indexOf(employeeDataArray[i].slice(9,13))].push(employeeDataArray[i].slice(2,7));
+        }
+    }
+    console.log(employeeID);
+    
+});
