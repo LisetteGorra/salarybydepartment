@@ -92,3 +92,23 @@ total for loop
     console.log(departmentID);
 })
 -------------------------------------------------------------------------------
+- now we have to create the multi dimensional arrays 
+- we have to make sub arrays because the original arrays arenot valid, the are still single-d and we need multi-d
+
+ // populate multi-d arrays with empty sub-arrays (NO DATA!!!)
+        employeeID.push([]);
+        employeeName.push([]);
+        salaries.push([]);
+- now we have created sub arrays for the arrays: 
+//multi-d arrays -- currently invalid 
+var employeeID = []; 
+var employeeName = [];
+var salaries = [];
+- to make them valid
+ 
+- this is done within the for loop, so that it can push 9 empty sub arrays into the original array variables
+
+
+-------------------------------------------------------------------------------
+- now we can console log everything 
+- we do this sub array code so that we can populate no matter how many departments get added in the future
