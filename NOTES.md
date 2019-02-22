@@ -36,4 +36,59 @@ now you can populate with the correct variable names
     var employeeName = [];
     var salaries = [];
 -------------------------------------------------------------------------------
+- next we start with the simplest text file which is the department.txt file, it only lists the department names and codes, it governs all the other txt files 
+- we need to create an fs readFile for departments.txt and then console log the data to make sure everything works 
+
+
+fs.readFile('departments.txt', 'utf8', function(error, data){
+    if(error) throw error
     
+    console.log(data);
+})
+-------------------------------------------------------------------------------
+- next we are going to clean the data and get rid of any strings we will not need
+- then console log it to make sure it returns the cleaned data 
+
+
+  var cleanDeptData = data.replace(/INSERT INTO `departments` Values /g, "");
+    console.log(cleanDeptData);
+})
+
+-------------------------------------------------------------------------------
+- now we can split the data and turn it into arrays 
+- and console log to make sure it works
+
+
+    var cleanDeptData = data.replace(/INSERT INTO `departments` Values /g, "");
+    var deptDataArray = cleanDeptData.split('\n');
+    console.log(deptDataArray);
+- returns the data into 1 large array, with several indexes
+ 
+------------------------------------------------------------------------------
+
+- our next step is to populate our arrays 
+- the department id will go into one array and the department names will go into another array 
+- we will use a for loop to do this 
+- then console log the array var departmentID to make sure it populates
+
+
+  
+    for (var i = 0; i < deptDataArray.length; i++){
+        departmentID.push(deptDataArray[i].slice(2,6));
+    }
+    console.log(departmentID);
+
+-------------------------------------------------------------------------------
+- next store the names into an array but count backwards since the lengths are different, they all have -3 characters
+
+
+ departments.push(deptDataArray[i].slice(9,-3))
+-------------------------------------------------------------------------------
+total for loop 
+   for (var i = 0; i < deptDataArray.length; i++){
+        departmentID.push(deptDataArray[i].slice(2,6));
+        departments.push(deptDataArray[i].slice(9,-3))
+    }
+    console.log(departmentID);
+})
+-------------------------------------------------------------------------------
