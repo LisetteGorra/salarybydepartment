@@ -53,6 +53,7 @@ fs.readFile('employeedepartments.txt', 'utf8', function(error, data){
         if (employeeDataArray[i].slice(29,33) == '9999'){
             
             
+            
             // console.log(employeeDataArray[i].slice(9,13));
             // console.log(employeeDataArray[i].slice(2,7));
             
@@ -70,19 +71,24 @@ fs.readFile('salaries.txt', 'utf8', function(error, data){
     if (error) throw error;
     
     var cleanSalaryData = data.replace(/INSERT INTO `departments` Values /g, "");
-    var salaryArray = cleanSalaryData.split('\n');
-    
-    for (var i = 0; i < salaryArray.length; i++){
-        if(salaryArray[i].slice(27,31) == '9999'){
-            
-   
-         salaries.push(salaryArray[i].slice(7,12));
-    
+    var salaryDataArray = cleanSalaryData.split('\n');
 
-//  console.log(salaryArray[i]);
-   }
-    console.log(salaries);
-}
-    
+    for (var i = 0; i < salaryDataArray.length; i++){ 
+        if(salaryDataArray[i].slice(27,31) == '9999'){ 
+            console.log("Salary empId:",salaryDataArray[i].slice(1,6));
+            for(var j = 0; j < employeeID.length; j++ ){ 
+                for(var k = 0; k < employeeID[j].length; k++){ 
+                  
+                  
+                    console.log(employeeID[j][k]);
+                    if(salaryDataArray[i].slice(1,6) == employeeID[j][k]){ 
+                        console.log("!!!!Match!!!");
+                }
+            }
+        }
+            console.log(salaryDataArray[i].slice(1,6));
+ 
+        } 
+    }    
 
 })

@@ -126,7 +126,7 @@ fs.readFile('employeedepartments.txt', 'utf8', function(error, data){
 - clean the data like last time 
 
   var cleanEmployeeData = data.replace(/INSERT INTO `departments` Values /g, "");
-  var employeeDataArray = cleanEmployeeData.split('\n');
+  var employeeDataArray = cleanEmployeeData.split('\n'); << splits data at every end on line character
 
 - and console log the code to make sure it works 
 
@@ -155,6 +155,71 @@ for (var i = 0; i < employeeDataArray.length; i++){
     }
     
 -------------------------------------------------------------------------------
-employee name is next 
+salaries
 
-and salaries
+fs.readFile('salaries.txt', 'utf8', function(error, data){
+    if (error) throw error;
+    
+    var cleanSalaryData = data.replace(/INSERT INTO `departments` Values /g, "");
+    var salaryDataArray = cleanSalaryData.split('\n');
+    
+    for (var i = 0; i < salaryDataArray.length; i++){
+        if(salaryDataArray[i].slice(27,31) == '9999'){
+            
+         salaries.push(salaryDataArray[i].slice(1,6)); //ID
+         salaries.push(salaryDataArray[i].slice(7,12)); // current salaries
+         
+    
+    
+   }
+    console.log();
+}
+    
+
+})
+-------------------------------------------------------------------------------
+- now we need to create a new for loop to in order to loop within the  2 elements that are equal to '9999'
+
+for (var i = 0; i < salaryDataArray.length; i++){
+        if(salaryDataArray[i].slice(27,31) == '9999'){
+            for(var j = 0; j < employeeID.length; j++ ){
+- j will give you access to all elements withing the sub array
+-------------------------------------------------------------------------------
+- and now we need another for loop to loop through 
+
+ for(var k = 0; k < employeeID[j].length; k++)
+- this will give you access to the 1st element withing the sub array
+ 
+
+-------------------------------------------------------------------------------
+- an if statement will help you loop through every element in each sub array 
+
+ if(salaryDataArray[i].slice(1,6) == employeeID[j][k]){  
+ 
+-------------------------------------------------------------------------------
+
+    for (var i = 0; i < salaryDataArray.length; i++){ // this give you all the array info, with all elements
+        if(salaryDataArray[i].slice(27,31) == '9999'){ // this gives you the elements that are equal to 9999
+            for(var j = 0; j < employeeID.length; j++ ){ // this gives you access to the sub arrays in the array salaryDataArray
+                for(var k = 0; k < employeeID[j].length; k++){ // this give you access to the 1st element of the sub array within salaryDataArray 
+                    if(salaryDataArray[i].slice(1,6) == employeeID[j][k]){ 
+                        // index 16 line 17 
+                }
+-------------------------------------------------------------------------------
+- console log all your work
+
+
+  for (var i = 0; i < salaryDataArray.length; i++){ // this give you all the array info, with all elements
+        if(salaryDataArray[i].slice(27,31) == '9999'){ // this gives you the elements that are equal to 9999
+            for(var j = 0; j < employeeID.length; j++ ){ // this gives you access to the sub arrays in the array salaryDataArray
+                for(var k = 0; k < employeeID[j].length; k++){ // this give you access to the 1st element of the sub array within salaryDataArray 
+                   console.log("Salary empId:",salaryDataArray[i].slice(1,6));
+                   console.log(employeeID[j][k]);
+                   
+                    if(salaryDataArray[i].slice(1,6) == employeeID[j][k]){ 
+                    console.log("!!!!Match!!!");
+                }
+                console.log(salaryDataArray[i].slice(1,6));
+            }
+-------------------------------------------------------------------------------
+
