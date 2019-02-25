@@ -78,14 +78,14 @@ fs.readFile('employees.txt', 'utf8', function(error, data){
        var nameSplit = nameDataArray[i].split(',');
        var nameSplitID = nameSplit[0].replace(/\(/g, "");
         
-        // console.log("nameSplit");
-        // console.log(nameSplit);
+        console.log("nameSplit");
+        console.log(nameSplit);
         
-        //console.log("nameSplitID");
-        //console.log(nameSplitID);
+        console.log("nameSplitID");
+        console.log(nameSplitID);
          
-        //console.log("nameSplit[2]");
-        //console.log(nameSplit[2]);
+        console.log("nameSplit[2]");
+        console.log(nameSplit[2]);
         
         for (var j = 0; j < employeeID.length; j++) {
             
@@ -102,9 +102,9 @@ fs.readFile('employees.txt', 'utf8', function(error, data){
         }
     }
    
-    //console.log("employeeName");
-    //console.log(employeeName);
+    console.log("employeeName");
+  console.log(employeeName);
     
-    //console.log(employeeName[0][0]);
+    console.log(employeeName[0][0]);
     
 });
