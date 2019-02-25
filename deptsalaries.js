@@ -33,11 +33,11 @@ fs.readFile('departments.txt', 'utf8', function(error, data){
         salaries.push([]);
         
     }
-    // console.log(departmentID);
-    // console.log(departments);
-    // console.log(employeeID);
-    // console.log(employeeName);
-    // console.log(salaries);
+    console.log(departmentID);
+    console.log(departments);
+    console.log(employeeID);
+    console.log(employeeName);
+    console.log(salaries);
     
 });
 
@@ -70,7 +70,7 @@ fs.readFile('employeedepartments.txt', 'utf8', function(error, data){
 fs.readFile('salaries.txt', 'utf8', function(error, data){
     if (error) throw error;
     
-<<<<<<< HEAD
+
     var cleanSalaryData = data.replace(/INSERT INTO `departments` Values /g, "");
     var salaryDataArray = cleanSalaryData.split('\n');
 
@@ -99,8 +99,7 @@ fs.readFile('salaries.txt', 'utf8', function(error, data){
              }
         } 
         
-})
-=======
+
 });
 
 
@@ -114,38 +113,46 @@ fs.readFile('employees.txt', 'utf8', function(error, data){
     var nameDataArray = cleanNameData.split('\n');
     
     for (var i = 0; i < nameDataArray.length; i++ ) {
-        
-       var nameSplit = nameDataArray[i].split(',');
-       var nameSplitID = nameSplit[0].replace(/\(/g, "");
+        nameDataArray[i].slice(21, -20);
+    //   var nameSplit = nameDataArray[i].split(',');
+    //   var nameSplitID = nameSplit[0].replace(/\(/g, "");
         
         // console.log("nameSplit");
         // console.log(nameSplit);
         
-        //console.log("nameSplitID");
-        //console.log(nameSplitID);
+        // console.log("nameSplitID");
+        // console.log(nameSplitID);
          
-        //console.log("nameSplit[2]");
-        //console.log(nameSplit[2]);
+        // console.log("nameSplit[2]");
+        // console.log(nameSplit[2]);
         
         for (var j = 0; j < employeeID.length; j++) {
             
             for (var k = 0; k < employeeID[j]; k++) {
-                
-                if(employeeID[j][k] == nameSplitID) {
+               
+                if(nameDataArray[i].slice(1,6) == employeeID[j][k]){
                     
-                   var joinedNames = nameSplit[2].replace(/'/g, "") + " " + nameSplit[3].replace(/'/g, " ");
-                    
-                    employeeName[j].push(joinedNames);
+                    employeeName[j][k] = nameDataArray[i].slice(21,-20).split(",").reverse().join( "").replace(/'/g, "");
                     
                 }
+                // if(employeeID[j][k] == nameSplitID) {
+                    
+                //   var joinedNames = nameSplit[2].replace(/'/g, "") + " " + nameSplit[3].replace(/'/g, " ");
+                    
+                //     employeeName[j].push(joinedNames);
+                    
+                //     console.log(nameSplit[2].replace(/'/g, ""), nameSplit[3].replace(/'/g, ""));
+                // }
             }
         }
     }
-   
-    //console.log("employeeName");
-    //console.log(employeeName);
     
-    //console.log(employeeName[0][0]);
+
+   
+     //console.log("employeeName");
+     //console.log(employeeName);
+    
+   console.log(employeeName);
     
 });
->>>>>>> employeenames
+
