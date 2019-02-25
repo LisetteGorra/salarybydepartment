@@ -22,7 +22,7 @@ fs.readFile('departments.txt', 'utf8', function(error, data){
     var cleanDeptData = data.replace(/INSERT INTO `departments` Values /g, "");
     var deptDataArray = cleanDeptData.split('\n');
     
-    for (var i = 0; i < deptDataArray.length; i++){
+    for (var i = 0; i < deptDataArray.length; i++){ // curly braces create a code block 
         // populate single-d arrays with DATA
         departmentID.push(deptDataArray[i].slice(2,6));
         departments.push(deptDataArray[i].slice(9,-3));
@@ -74,21 +74,28 @@ fs.readFile('salaries.txt', 'utf8', function(error, data){
     var salaryDataArray = cleanSalaryData.split('\n');
 
     for (var i = 0; i < salaryDataArray.length; i++){ 
+      //if(salaryDataArray[0].slice(1987) == '9999'){ false
         if(salaryDataArray[i].slice(27,31) == '9999'){ 
+           
             console.log("Salary empId:",salaryDataArray[i].slice(1,6));
-            for(var j = 0; j < employeeID.length; j++ ){ 
-                for(var k = 0; k < employeeID[j].length; k++){ 
+            
+            for(var j = 0; j < employeeID.length; j++ ){  // LOOPS through 20 employee id's in the employeeID array
+                
+                for(var k = 0; k < employeeID[j].length; k++){ // LOOPS through the sub arrays 
                   
                   
-                    console.log(employeeID[j][k]);
-                    if(salaryDataArray[i].slice(1,6) == employeeID[j][k]){ 
-                        console.log("!!!!Match!!!");
+                    // console.log(employeeID[j][k]);
+                    if(salaryDataArray[i].slice(1,6) == employeeID[j][k]){ // we are getting the employee id number and matching it from both files
+                     
+                      console.log(salaryDataArray[i].slice(7,12)); // here you are grabbing the salary from the line that matches and pushing it to the sub array [j] that is in the salaries multi-d array
+                
+
+                        // console.log("!!!!Match!!!");
                 }
             }
         }
-            console.log(salaryDataArray[i].slice(1,6));
- 
+            //  console.log(salaryDataArray[i].slice(1,6));
+             }
         } 
-    }    
-
+        
 })
