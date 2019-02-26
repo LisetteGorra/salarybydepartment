@@ -112,21 +112,25 @@ fs.readFile('salaries.txt', 'utf8', function(error, data){
 fs.readFile('employees.txt', 'utf8', function(error, data){
     if (error) throw error;
     
+      var nameSplit, nameSplitId, joinedNames; 
       
     var cleanNameData = data.replace(/INSERT INTO `departments` Values /g, "");
     var employeeNameDataArray = cleanNameData.split('\n');
     
     for (var i = 0; i < employeeNameDataArray.length; i++ ) {
-       employeeNameDataArray[i].slice(21, -20);
-  
         
+        nameSplit = employeeNameDataArray[i].split(',');
+        nameSplitId = nameSplit[0].replace(/\(/g, "");
+   
+   
         for (var j = 0; j < employeeID.length; j++) {
             
             for (var k = 0; k < employeeID[j].length; k++) {
                
-                if(employeeNameDataArray[i].slice(1, 6) == employeeID[j][k]) {
-                    
-                    employeeName[j][k] = employeeNameDataArray[i].slice(21,-20).split(",").reverse().join(" ").replace(/'/g, "");
+                if(employeeID[j][k] == nameSplitId) {
+                  
+                  joinedNames = nameSplit[2].replace(/'/g, "") + " " + nameSplit[3].replace(/'/g, " ");
+                  employeeName[j].push(joinedNames);
                     
                 }
                
@@ -136,7 +140,8 @@ fs.readFile('employees.txt', 'utf8', function(error, data){
     
 
     
-//   console.log(employeeName);
+  console.log(employeeName);
     
 });
 
+// Create report that summarizes all of the departments 9
