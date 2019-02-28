@@ -140,3 +140,37 @@ fs.readFile('employees.txt', 'utf8', function(error, data){
     
 });
 
+
+// //Process 'employees.txt' file 
+
+// fs.readFile('employees.txt', 'utf8', function(error, data){
+//     if (error) throw error;
+    
+      
+//     var cleanNameData = data.replace(/INSERT INTO `departments` Values /g, "");
+//     var employeeNameDataArray = cleanNameData.split('\n');
+    
+//     for (var i = 0; i < employeeNameDataArray.length; i++ ) {
+//       employeeNameDataArray[i].slice(21, -20);
+  
+        
+//         for (var j = 0; j < employeeID.length; j++) {
+            
+//             for (var k = 0; k < employeeID[j].length; k++) {
+               
+//                 if(employeeNameDataArray[i].slice(1, 6) == employeeID[j][k]) {
+                    
+//                     employeeName[j][k] = employeeNameDataArray[i].slice(21,-20).split(",").reverse().join(" ").replace(/'/g, "");
+                    
+//                 }
+               
+//             }
+//         }
+//     }
+    
+
+    
+// //   console.log(employeeName);
+    
+// });
+
