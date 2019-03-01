@@ -14,7 +14,7 @@ var salaries = [];
 fs.readFile('departments.txt', 'utf8', function(error, data){
     if (error) throw error;
     
-    var cleanDeptData = data.replace(/INSERT INTO `departments` Values /g, "");
+    var cleanDeptData = data.replace(/INSERT INTO `departments` Values /g,"");
     var deptDataArray = cleanDeptData.split('\n');
    
    for(var i = 0; i < deptDataArray.length; i++){
@@ -28,8 +28,29 @@ fs.readFile('departments.txt', 'utf8', function(error, data){
        
        
    }
-   console.log(salaries);
+//   console.log(departmentID);
 //   console.log(departments);
+//   console.log(employeeID);
+//   console.log(employeeName);
+//   console.log(salaries);
   
    
+});
+
+
+//Proccess 'employeedepartmens.txt' file
+
+fs.readFile('employeedepartmens.txt', 'utf8', function(error, data){
+    if (error) throw error;
+
+    var cleanEmployeeDeptData = data.replace(/INSERT INTO `departments` Values /g,"");
+    var employeeDeptDataArray = cleanEmployeeDeptData.split('\n');
+    
+    for(var i = 0; i < employeeDeptDataArray.length; i++) {
+        //grab only data in lines with 9999 using slice and positions
+        if(employeeDeptDataArray[i].slice(29,33) == '9999');
+        
+            
+        
+    }
 })
